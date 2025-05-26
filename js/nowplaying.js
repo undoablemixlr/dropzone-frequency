@@ -1,4 +1,3 @@
-
 async function updateNowPlaying() {
   try {
     const res = await fetch('https://onair.dropzone-frequency.com/api/nowplaying/azuracast');
@@ -6,16 +5,19 @@ async function updateNowPlaying() {
 
     const song = data.now_playing.song;
     const artistTitle = `${song.artist} - ${song.title}`;
-    document.getElementById('nowplaying-title').textContent = artistTitle;
+    const coverUrl = song.art ? song.art : 'fallback.jpg';
 
-    const art = song.art ? song.art : 'fallback.jpg'; // URL directe de la pochette
-    document.getElementById('nowplaying-cover').src = art;
+    // Met à jour le DOM
+    document.getElementById('nowplaying-title').textContent = artistTitle;
+    document.getElementById('nowplaying-cover').src = coverUrl;
+
   } catch (e) {
+    console.error("Erreur nowplaying:", e);
     document.getElementById('nowplaying-title').textContent = 'Titre indisponible';
     document.getElementById('nowplaying-cover').src = 'fallback.jpg';
   }
 }
 
-// Premier appel + mise à jour toutes les 15 sec
+// Rafraîchir toutes les 15 secondes
 updateNowPlaying();
 setInterval(updateNowPlaying, 15000);
