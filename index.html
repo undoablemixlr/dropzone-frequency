@@ -4,6 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Dropzone Frequency</title>
+  <meta name="description" content="Dropzone Frequency - Web radio électro. Nice Music For Nice People. Écoute live et découvre les titres diffusés.">
+  <meta name="keywords" content="radio, musique électronique, web radio, stream, deep house, techno, dropzone frequency">
+  <meta name="author" content="Dropzone Frequency">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Dropzone Frequency" />
+  <meta property="og:description" content="Nice Music For Nice People – Écoute en direct." />
+  <meta property="og:image" content="https://dropzone-frequency.com/fallback.jpg" />
+  <meta property="og:url" content="https://dropzone-frequency.com" />
+  <meta property="og:type" content="website" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Dropzone Frequency">
+  <meta name="twitter:description" content="Web radio électro – Nice Music For Nice People.">
+  <meta name="twitter:image" content="https://dropzone-frequency.com/fallback.jpg">
+
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,10 +28,12 @@
   <div class="container">
     <h1>DROPZONE FREQUENCY</h1>
     <h2>Nice Music For Nice People</h2>
-<div class="nowplaying">
-  <img id="nowplaying-cover" src="fallback.jpg" alt="Pochette actuelle" class="cover" />
-  <p id="nowplaying-title" class="title">Chargement...</p>
-</div>
+
+    <div class="nowplaying">
+      <img id="nowplaying-cover" src="fallback.jpg" alt="Pochette actuelle" class="cover" />
+      <p id="nowplaying-title" class="title">Chargement...</p>
+    </div>
+
     <div class="player">
       <audio controls autoplay>
         <source src="https://onair.dropzone-frequency.com:8010/stream.mp3" type="audio/mpeg">
