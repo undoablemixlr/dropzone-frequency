@@ -1,6 +1,6 @@
 async function updateNowPlaying() {
   try {
-    const res = await fetch('https://onair.dropzone-frequency.com/api/nowplaying/dropzone_frequency_');
+    const res = await fetch('https://onair.dropzone-frequency.com/api/nowplaying/dropzone_frequency');
     const data = await res.json();
 
     const song = data.now_playing.song;
