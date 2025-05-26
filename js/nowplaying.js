@@ -1,15 +1,24 @@
-
 async function updateNowPlaying() {
   try {
     const res = await fetch('https://onair.dropzone-frequency.com/api/nowplaying/dropzone_frequency_');
     const data = await res.json();
 
-    if (!data?.now_playing?.song) throw new Error("Aucune chanson");
-
     const song = data.now_playing.song;
     const artistTitle = `${song.artist} - ${song.title}`;
-    const coverUrl = song.art || 'fallback.jpg';
+    let coverUrl = song.art;
 
+    // Si aucune pochette, essaie Last.fm
+    if (!coverUrl || coverUrl.trim() === '') {
+      const lastfmApiKey = 'TA_CLEF_API_LASTFM';  // remplace par ta vraie clé
+      const lastfmUrl = `https://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=${lastfmApiKey}&artist=${encodeURIComponent(song.artist)}&track=${encodeURIComponent(song.title)}&format=json`;
+
+      const lastfmRes = await fetch(lastfmUrl);
+      const lastfmData = await lastfmRes.json();
+
+      coverUrl = lastfmData?.track?.album?.image?.pop()?.['#text'] || 'fallback.jpg';
+    }
+
+    // Met à jour l'interface
     document.getElementById('nowplaying-title').textContent = artistTitle;
     document.getElementById('nowplaying-cover').src = coverUrl;
 
@@ -20,5 +29,6 @@ async function updateNowPlaying() {
   }
 }
 
+// Rafraîchit toutes les 15 secondes
 updateNowPlaying();
 setInterval(updateNowPlaying, 15000);
