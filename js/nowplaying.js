@@ -1,3 +1,19 @@
+<script>
+  let progress = 0;
+  const bar = document.querySelector('.progress-bar');
+  const loader = document.getElementById('loader');
+
+  const interval = setInterval(() => {
+    progress += 4;
+    bar.style.width = progress + '%';
+    if (progress >= 100) {
+      clearInterval(interval);
+      loader.style.display = 'none';
+      document.body.style.overflow = 'auto'; // si bloqué
+    }
+  }, 80); // vitesse de remplissage
+</script>
+
 async function updateNowPlaying() {
   try {
     const res = await fetch('https://onair.dropzone-frequency.com/api/nowplaying/azuracast');
