@@ -2,14 +2,24 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Dropzone Frequency</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body style="text-align: center; font-family: sans-serif;">
-  <h1>🎧 Dropzone Frequency</h1>
-  <p>Écoute en direct :</p>
-  <audio controls autoplay>
-    <source src="https://onair.dropzone-frequency.com:8010/1" type="audio/mpeg">
-    Votre navigateur ne supporte pas la lecture audio.
-  </audio>
+<body>
+  <div class="container">
+    <h1>DROPZONE FREQUENCY</h1>
+    <h2>Nice Music For Nice People</h2>
+
+    <div class="player">
+      <audio controls autoplay>
+        <source src="https://onair.dropzone-frequency.com:8010/stream.mp3" type="audio/mpeg">
+        Votre navigateur ne supporte pas la lecture audio.
+      </audio>
+      <div id="now-playing">En cours de lecture…</div>
+    </div>
+  </div>
+
+  <script src="js/nowplaying.js"></script>
 </body>
 </html>
