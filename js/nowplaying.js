@@ -9,7 +9,7 @@ async function updateNowPlaying() {
 
     // Si aucune pochette, essaie Last.fm
     if (!coverUrl || coverUrl.trim() === '') {
-      const lastfmApiKey = 'TA_CLEF_API_LASTFM';  // remplace par ta vraie clé
+      const lastfmApiKey = 'cb4458b2ec7d60a1a8ca7d98ab12f376';  // remplace par ta vraie clé
       const lastfmUrl = `https://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=${lastfmApiKey}&artist=${encodeURIComponent(song.artist)}&track=${encodeURIComponent(song.title)}&format=json`;
 
       const lastfmRes = await fetch(lastfmUrl);
