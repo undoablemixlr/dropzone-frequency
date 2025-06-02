@@ -1,7 +1,7 @@
 async function updateNowPlaying() {
   try {
     // Appel à l'API Dropzone
-    const res = await fetch('https://onair.dropzone-frequency.com/api/nowplaying/dropzone_frequency');
+    const res = await fetch('https://onair.dropzone-frequency.com/api/nowplaying/azuracast');
     if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
 
     const data = await res.json();
