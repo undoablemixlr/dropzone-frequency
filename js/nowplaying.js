@@ -1,9 +1,13 @@
 async function updateNowPlaying() {
   try {
     const res = await fetch('https://onair.dropzone-frequency.com/api/nowplaying/dropzone_frequency');
+    if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+    
     const data = await res.json();
 
-    const song = data.now_playing.song;
+    const song = data?.now_playing?.song;
+    if (!song || !song.artist || !song.title) throw new Error("Chanson non définie");
+
     const artistTitle = `${song.artist} - ${song.title}`;
     let coverUrl = song.art;
 
@@ -32,3 +36,4 @@ async function updateNowPlaying() {
 // Rafraîchit toutes les 15 secondes
 updateNowPlaying();
 setInterval(updateNowPlaying, 15000);
+
